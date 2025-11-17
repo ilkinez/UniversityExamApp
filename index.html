@@ -36,6 +36,27 @@
       text-align: center;
     }
 
+    .dark-toggle {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 8px;
+    }
+
+    .dark-toggle button {
+      border: none;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      background: #e5e7eb;
+      transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+      font-weight: 500;
+    }
+
+    .dark-toggle button:active {
+      transform: scale(0.97);
+    }
+
     .mode-toggle {
       display: flex;
       gap: 10px;
@@ -175,27 +196,101 @@
         font-size: 1rem;
       }
     }
+
+    /* ===================== */
+    /*        DARK MODE      */
+    /* ===================== */
+
+    body.dark {
+      background: #020617;
+      color: #e5e7eb;
+    }
+
+    body.dark .container {
+      background: #020617;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+      border: 1px solid #1f2937;
+    }
+
+    body.dark h1 {
+      color: #e5e7eb;
+    }
+
+    body.dark .soru-listesi {
+      background: #020617;
+      border-color: #1f2937;
+    }
+
+    body.dark .cevap-alani {
+      background: #020617;
+      border-color: #1f2937;
+    }
+
+    body.dark .soru-btn {
+      background: #020617;
+      color: #e5e7eb;
+      border-color: #374151;
+    }
+
+    body.dark .soru-btn:hover {
+      background: #111827;
+      border-color: #60a5fa;
+      box-shadow: 0 3px 8px rgba(15, 23, 42, 0.9);
+    }
+
+    body.dark .cevap-kutu {
+      background: #020617;
+      border-color: #4b5563;
+      color: #f9fafb;
+    }
+
+    body.dark .cevap-soru {
+      color: #e5e7eb;
+    }
+
+    body.dark .not {
+      color: #9ca3af;
+    }
+
+    body.dark .mode-toggle button {
+      background: #1f2937;
+      color: #e5e7eb;
+      box-shadow: none;
+    }
+
+    body.dark .mode-toggle button.active {
+      background: #2563eb;
+      color: #e5e7eb;
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.5);
+    }
+
+    body.dark .dark-toggle button {
+      background: #1f2937;
+      color: #e5e7eb;
+    }
   </style>
 </head>
 <body>
   <div class="container">
+
+    <!-- DARK MODE TOGGLE -->
+    <div class="dark-toggle">
+      <button id="dark-toggle">🌙 Dark mode</button>
+    </div>
+
     <h1>İmtahan köçürmə zone</h1>
 
-    
     <div class="mode-toggle">
       <button id="btn-uzun" class="active">Uzun cavab</button>
       <button id="btn-kisa">Qısa cavab</button>
     </div>
 
     <div class="layout">
-      
       <div class="soru-listesi">
         <div class="soru-baslik" id="soru-listesi-baslik">Suallar (hər ikisi üçün eynidir)</div>
-
         <div class="soru-grup" id="soru-grup"></div>
       </div>
 
-     
       <div class="cevap-alani">
         <div class="cevap-baslik" id="secili-mod">Mod: Uzun cavab</div>
         <div class="cevap-soru" id="secili-soru">Sual seç.</div>
@@ -210,7 +305,6 @@ Cavab burada olacaq.
   </div>
 
   <script>
-  
     const SORULAR = {
       1: "1.Müasir şəbəkə arxitektura əsas növlər.",
       2: "2.Osi modeli nədir və təbəqələri.",
@@ -244,7 +338,6 @@ Cavab burada olacaq.
       30: "30.Şəbəkədə virtualization texn tətbiq sahə."
     };
 
-   
     const cevaplar = {
       uzun: {
         1: "Müasir şəbəkə arxitekturaları informasiya sistemlərinin strukturlaşdırılması və idarə olunması üçün mühüm rol oynayır. Əsas arxitektura növlərinə Client-Server, Peer-to-Peer (P2P), Distributed, Cluster və Cloud modelləri daxildir. Client-Server arxitekturasında mərkəzləşdirilmiş server müştəri cihazlarına xidmət göstərir. P2P modelində cihazlar birbiri ilə bərabər hüquqlu əlaqə qurur. Distributed arxitektura resursları paylayaraq miqyaslanmanı və sabitliyi artırır. Cluster arxitekturası yüksək performans və nasazlığa dözümlülük təmin edir. Cloud arxitekturası isə SaaS, PaaS və IaaS modelləri ilə internet üzərindən xidmətlər təqdim edir. Bu arxitekturalar müxtəlif funksional tələblərə uyğun seçilir. Hər biri fərqli miqyas, təhlükəsizlik və idarəetmə imkanları təqdim edir. Arxitektura seçimi sistemin məqsədinə və istifadəçi ehtiyaclarına əsaslanmalıdır.",
@@ -277,7 +370,6 @@ Cavab burada olacaq.
         28: "IoT — Internet of Things — cihazların internet üzərindən əlaqə qurmasını təmin edən sistemdir. IoT şəbəkələri üçün əsas tələblərə aşağı gecikmə, enerji səmərəliliyi, təhlükəsizlik, miqyaslanma və uyğunluq daxildir. Cihazlar real vaxt rejimində məlumat ötürməli və stabil cavab verməlidir. Enerji istehlakı minimum olmalıdır, çünki bir çox IoT cihazı batareya ilə işləyir. Təhlükəsizlik üçün şifrələmə, autentifikasiya və məlumat bütövlüyü vacibdir. Şəbəkə çoxlu sayda cihazı dəstəkləməli və miqyaslana bilməlidir. Protokolların uyğunluğu və standartlaşma mühüm rol oynayır. IoT şəbəkələrində MQTT, CoAP və 6LoWPAN kimi yüngül protokollar istifadə olunur. Bulud inteqrasiyası və edge computing performansı artırır. Bu tələblər olmadan IoT sistemləri sabit və effektiv işləyə bilməz.",
         29: "5G — beşinci nəsil mobil şəbəkə texnologiyası — yüksək sürət, aşağı gecikmə və geniş cihaz dəstəyi ilə seçilir. 5G saniyədə 10 Gbps-ə qədər sürət təqdim edə bilir və gecikməni 1 ms-ə qədər azaldır. Bu xüsusiyyətlər real vaxt tətbiqləri üçün idealdır. 5G IoT və smart city kimi genişmiqyaslı sistemləri dəstəkləyir. Massiv MIMO və beamforming texnologiyaları siqnalın daha dəqiq yönləndirilməsini təmin edir. 5G həm sub-6 GHz, həm də mmWave tezliklərində işləyir və daha yüksək bant genişliyi təqdim edir. Enerji səmərəliliyi artırılıb, bağlantı isə daha sabitdir. 5G avtonom nəqliyyat, uzaq tibbi xidmət və sənaye avtomatlaşdırması kimi sahələrdə yeni imkanlar yaradır. Bu texnologiya gələcəyin rəqəmsal infrastrukturunun əsas elementidir.",
         30: "Virtualization texnologiyası fiziki resursların virtual mühitdə bölüşdürülməsini təmin edir. Şəbəkədə bu texnologiya serverlərin, router və firewall funksiyalarının virtual maşınlar üzərində işləməsinə imkan verir. Əsas tətbiq sahələrinə data center-lər, test mühitləri, bulud xidmətləri və şəbəkə funksiyalarının avtomatlaşdırılması daxildir. Virtualization resursların səmərəli istifadəsini və xərclərin azalmasını təmin edir. VMware, KVM və Hyper-V kimi platformalar geniş istifadə olunur. Şəbəkə funksiyalarının virtual formaya keçirilməsi NFV ilə birgə tətbiq olunur və miqyaslanmanı artırır. Virtual maşınlar arasında izolyasiya təhlükəsizliyi yüksəldir. İstifadəçilər müxtəlif əməliyyat sistemlərini eyni fiziki cihazda işlədə bilir. Virtualization müasir şəbəkə dizaynının əsas komponentlərindən biridir."
-
       },
       kisa: {
         1: "Müasir şəbəkə arxitekturalarına Client-Server, P2P, Distributed, Cluster və Cloud modelləri daxildir. Client-Server mərkəzləşdirilmiş idarəetmə, P2P bərabər əlaqə, Distributed paylanmış resurslar, Cluster yüksək performans və sabitlik, Cloud isə internet üzərindən xidmət təqdim edir. Arxitektura seçimi sistemin məqsədindən asılıdır.",
@@ -310,8 +402,6 @@ Cavab burada olacaq.
         28: "IoT şəbəkələri üçün əsas tələblər aşağı gecikmə, enerji səmərəliliyi, təhlükəsizlik və miqyaslanmadır. IoT cihazları az enerji istifadə etməli, təhlükəsiz olmalı və çoxlu cihazı dəstəkləyə bilməlidir.",
         29: "5G yüksək sürət, çox aşağı gecikmə və geniş cihaz dəstəyi təqdim edən mobil şəbəkə texnologiyasıdır. Massiv MIMO, beamforming və geniş tezlik dəstəyi ilə real vaxt tətbiqləri və IoT üçün ideal platformadır.",
         30: "Virtualization şəbəkədə server, router və firewall kimi funksiyaların virtual maşınlarda işləməsini təmin edir. Əsas tətbiq sahələri data center-lər, bulud xidmətləri və test mühitləridir. Resurs istifadəsini yaxşılaşdırır və miqyaslanmanı artırır."
-
-        
       }
     };
 
@@ -323,9 +413,8 @@ Cavab burada olacaq.
     const seciliSoruEl = document.getElementById("secili-soru");
     const cevapMetinEl = document.getElementById("cevap-metin");
 
-    let aktifMod = "uzun"; // 
+    let aktifMod = "uzun";
 
-    // 🔹 3) 
     function butonlariOlustur() {
       for (let i = 1; i <= 30; i++) {
         const btn = document.createElement("button");
@@ -339,13 +428,11 @@ Cavab burada olacaq.
 
     butonlariOlustur();
 
-    
     btnUzun.addEventListener("click", () => {
       aktifMod = "uzun";
       btnUzun.classList.add("active");
       btnKisa.classList.remove("active");
       seciliModEl.textContent = "Mod: Uzun cavab";
-      
       if (seciliSoruEl.textContent === "Bir sual seçin.") {
         cevapMetinEl.textContent = "Bu alana cavabı yazın.";
       }
@@ -361,7 +448,6 @@ Cavab burada olacaq.
       }
     });
 
-    
     function soruTiklandi(e) {
       const numara = e.currentTarget.dataset.soru;
       const soruMetni = SORULAR[numara] || ("Sual " + numara);
@@ -375,6 +461,17 @@ Cavab burada olacaq.
 
       cevapMetinEl.textContent = metin;
     }
+
+    // DARK MODE TOGGLE JS
+    const darkToggleBtn = document.getElementById("dark-toggle");
+    darkToggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      if (document.body.classList.contains("dark")) {
+        darkToggleBtn.textContent = "☀️ Light mode";
+      } else {
+        darkToggleBtn.textContent = "🌙 Dark mode";
+      }
+    });
   </script>
 </body>
 </html>
