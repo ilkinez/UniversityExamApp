@@ -14,31 +14,31 @@
     }
 
     body {
-      background: #f5f5f5;
-      color: #222;
+      background: #f3f4f6;
+      color: #111827;
       display: flex;
       justify-content: center;
-      padding: 16px;
+      padding: 12px;
     }
 
     .container {
       width: 100%;
-      max-width: 900px;
+      max-width: 950px;
       background: #ffffff;
-      border-radius: 16px;
+      border-radius: 18px;
       padding: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
     }
 
     h1 {
-      font-size: 1.4rem;
+      font-size: 1.6rem;
       margin-bottom: 12px;
       text-align: center;
     }
 
     .mode-toggle {
       display: flex;
-      gap: 8px;
+      gap: 10px;
       justify-content: center;
       margin-bottom: 16px;
       flex-wrap: wrap;
@@ -46,17 +46,19 @@
 
     .mode-toggle button {
       border: none;
-      padding: 8px 16px;
+      padding: 10px 22px;
       border-radius: 999px;
-      font-size: 0.95rem;
+      font-size: 1rem;
       cursor: pointer;
-      background: #e4e4e7;
-      transition: background 0.2s, transform 0.1s;
+      background: #e5e7eb;
+      transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+      font-weight: 500;
     }
 
     .mode-toggle button.active {
       background: #2563eb;
       color: #ffffff;
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.4);
     }
 
     .mode-toggle button:active {
@@ -70,80 +72,90 @@
     }
 
     .soru-listesi {
-      flex: 1 1 260px;
+      flex: 1 1 320px;
       background: #f9fafb;
-      border-radius: 12px;
+      border-radius: 14px;
       padding: 12px;
-      max-height: 400px;
+      max-height: 460px;
       overflow-y: auto;
+      border: 1px solid #e5e7eb;
     }
 
     .soru-baslik {
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-weight: 600;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .soru-grup {
       display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+      flex-direction: column;
+      gap: 10px;
     }
 
     .soru-btn {
-      flex: 0 0 calc(25% - 6px);
-      min-width: 80px;
-      padding: 6px 8px;
-      border-radius: 999px;
-      border: 1px solid #e5e7eb;
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid #d1d5db;
       background: #ffffff;
       cursor: pointer;
-      font-size: 0.85rem;
-      text-align: center;
-      transition: background 0.15s, border-color 0.15s, transform 0.1s;
+      font-size: 0.98rem;
+      text-align: left;
+      line-height: 1.4;
+      transition: background 0.15s, border-color 0.15s, transform 0.08s, box-shadow 0.15s;
     }
 
     .soru-btn:hover {
       background: #eff6ff;
-      border-color: #bfdbfe;
+      border-color: #93c5fd;
+      box-shadow: 0 3px 8px rgba(148, 163, 184, 0.4);
     }
 
     .soru-btn:active {
-      transform: scale(0.97);
+      transform: scale(0.98);
     }
 
     .cevap-alani {
-      flex: 1 1 260px;
-      border-radius: 12px;
+      flex: 1 1 320px;
+      border-radius: 14px;
       border: 1px solid #e5e7eb;
-      padding: 12px;
-      background: #fafafa;
+      padding: 14px;
+      background: #f9fafb;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px;
+      min-height: 260px;
     }
 
     .cevap-baslik {
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: 600;
     }
 
-    .cevap-kutu {
-      margin-top: 4px;
-      border-radius: 8px;
-      border: 1px dashed #cbd5f5;
-      background: #f9fafb;
-      padding: 10px;
-      font-size: 0.95rem;
+    .cevap-soru {
+      font-size: 1rem;
+      font-weight: 500;
       color: #374151;
-      min-height: 120px;
-      line-height: 1.5;
+    }
+
+    .cevap-kutu {
+      margin-top: 6px;
+      border-radius: 10px;
+      border: 1px dashed #cbd5f5;
+      background: #ffffff;
+      padding: 14px;
+      font-size: 1.05rem;
+      color: #111827;
+      min-height: 220px;
+      line-height: 1.6;
       white-space: pre-wrap;
+      overflow-wrap: break-word;
     }
 
     .not {
-      margin-top: 6px;
-      font-size: 0.75rem;
+      margin-top: 4px;
+      font-size: 0.8rem;
       color: #6b7280;
     }
 
@@ -151,139 +163,215 @@
       display: none;
     }
 
-    @media (max-width: 600px) {
-      .soru-btn {
-        flex: 0 0 calc(33.333% - 6px);
-      }
-
+    @media (max-width: 640px) {
       .container {
-        padding: 12px;
+        padding: 10px;
       }
-
-      .soru-listesi,
-      .cevap-alani {
-        max-height: none;
+      .soru-listesi {
+        max-height: 360px;
+      }
+      .cevap-kutu {
+        min-height: 180px;
+        font-size: 1rem;
       }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Soru – Cavab Çalışma Sayfası</h1>
+    <h1>İmtahan köçürmə zone</h1>
 
-    <!-- Uzun / Qısa cavab seçimi -->
+    
     <div class="mode-toggle">
       <button id="btn-uzun" class="active">Uzun cavab</button>
       <button id="btn-kisa">Qısa cavab</button>
     </div>
 
     <div class="layout">
-      <!-- Soru listesi -->
+      
       <div class="soru-listesi">
-        <div class="soru-baslik" id="soru-listesi-baslik">Uzun cavab sualları</div>
+        <div class="soru-baslik" id="soru-listesi-baslik">Suallar (hər ikisi üçün eynidir)</div>
 
-        <div class="soru-grup" id="uzun-grup"></div>
-        <div class="soru-grup hidden" id="kisa-grup"></div>
+        <div class="soru-grup" id="soru-grup"></div>
       </div>
 
-      <!-- Cevap alanı -->
+     
       <div class="cevap-alani">
-        <div class="cevap-baslik" id="secili-soru-baslik">Bir soru seçin</div>
+        <div class="cevap-baslik" id="secili-mod">Mod: Uzun cavab</div>
+        <div class="cevap-soru" id="secili-soru">Sual seç.</div>
         <div class="cevap-kutu" id="cevap-metin">
-Bu alana cevabı yazın.
+Cavab burada olacaq.
         </div>
         <div class="not">
-          Not: Aşağıdaki "cevaplar" nesnesindeki metinleri değiştirerek
-          her sorunun cevabını ayrı ayrı yazabilirsən.
+          Qeyd: Tutulsan getdin.
         </div>
       </div>
     </div>
   </div>
 
   <script>
-    // Buraya kendi cevaplarını yazacağın yer:
-    // ÖRNEK:
-    // uzun -> Soru 1, 2...
-    // kisa -> Soru 1, 2...
+  
+    const SORULAR = {
+      1: "1.Müasir şəbəkə arxitektura əsas növlər.",
+      2: "2.Osi modeli nədir və təbəqələri.",
+      3: "3.TCP/IP modelinin OSI-dən fərqi.",
+      4: "4.Şəbəkə protokol. funksiya və əsas növ",
+      5: "5.İp ünvanlaşdırma və subnetting.",
+      6: "6.İPv4 və İPv6 ünvanlarının əsas fərqləri",
+      7: "7.Nat nədir və necə işləyir.",
+      8: "8.VLAN nədir nə niyə istifadə olunur.",
+      9: "9.Switch və router arasındaki fərq.",
+      10: "10.Routing protokolları və iş prinsipləri.",
+      11: "11.OSPF və BGP routing protokol fərqləri.",
+      12: "12.Şəbəkə təhlükəsizlik tədbirləri.",
+      13: "13.VPN nədir, necə işləyir.",
+      14: "14.Wireless şəbəkələrin əsas standart və fərqlər.",
+      15: "15.QoS nədir nə niyə istifadə olunur.",
+      16: "16.MPLS texnologiyası və üstünlükləri.",
+      17: "17.Şəbəkədə yük balanslaşdırma və həyata keç..",
+      18: "18.Cloud computing və şəbəkə texnologiya əlaqə.",
+      19: "19.SDN nədir və ənənəvi şəbəkələrdən fərq.",
+      20: "20.NFV nədir və üstünlükləri.",
+      21: "21.Şəbəkə topologiyasının növləri.",
+      22: "22.DNS nədir, necə işləyir.",
+      23: "23.DHCP protokolunun funksiyası.",
+      24: "24.İCMP protokolu nə üçün istifadə olunur.",
+      25: "25.Şəbəkədə tafik analizi və monitorinq.",
+      26: "26.Cyber hücum növləri və qarşısnı almaq.",
+      27: "27.Şəbəkədə latency, jitter və packet loss.",
+      28: "28.İoT şəbəkələri üçün xüsusi tələblər.",
+      29: "29.5G şəbəkə tex. əsas xüsusiyyət.",
+      30: "30.Şəbəkədə virtualization texn tətbiq sahə."
+    };
+
+   
     const cevaplar = {
       uzun: {
-        1: "Soru 1-in UZUN cavabı buraya gelecek.\n\nBu metni dilediğin gibi dəyiş.",
-        2: "Soru 2-in uzun cavabı buraya gelecek.",
-        // 3–30 arası şimdilik boş, sen doldurursun:
-        // 3: "Soru 3 uzun cavab...",
+        1: "Müasir şəbəkə arxitekturaları informasiya sistemlərinin strukturlaşdırılması və idarə olunması üçün mühüm rol oynayır. Əsas arxitektura növlərinə Client-Server, Peer-to-Peer (P2P), Distributed, Cluster və Cloud modelləri daxildir. Client-Server arxitekturasında mərkəzləşdirilmiş server müştəri cihazlarına xidmət göstərir. P2P modelində cihazlar birbiri ilə bərabər hüquqlu əlaqə qurur. Distributed arxitektura resursları paylayaraq miqyaslanmanı və sabitliyi artırır. Cluster arxitekturası yüksək performans və nasazlığa dözümlülük təmin edir. Cloud arxitekturası isə SaaS, PaaS və IaaS modelləri ilə internet üzərindən xidmətlər təqdim edir. Bu arxitekturalar müxtəlif funksional tələblərə uyğun seçilir. Hər biri fərqli miqyas, təhlükəsizlik və idarəetmə imkanları təqdim edir. Arxitektura seçimi sistemin məqsədinə və istifadəçi ehtiyaclarına əsaslanmalıdır.",
+        2: "OSI modeli (Open Systems Interconnection) şəbəkə əlaqələrinin strukturlaşdırılması üçün beynəlxalq standartdır. 1983-cü ildə ISO tərəfindən hazırlanmış bu model şəbəkə funksiyalarını yeddi təbəqəyə bölür və hər təbəqə xüsusi funksiyanı yerinə yetirir. Fiziki təbəqə siqnalların ötürülməsi ilə məşğuldur. Data Link təbəqəsi çərçivələr və MAC ünvanları ilə işləyir. Şəbəkə təbəqəsi IP ünvanlaşdırma və marşrutlaşdırmanı həyata keçirir. Nəqliyyat təbəqəsi TCP və UDP protokolları ilə etibarlı ötürməni təmin edir. Sessiya təbəqəsi əlaqələrin yaradılması və idarə olunmasını həyata keçirir. Təqdimat təbəqəsi məlumatların kodlaşdırılması, şifrələnməsi və çevrilməsi ilə məşğuldur. Tətbiq təbəqəsi isə istifadəçiyə ən yaxın səviyyə olaraq proqramların şəbəkə ilə əlaqəsini təmin edir. OSI modeli diaqnostika, şəbəkə dizaynı və problemlərin təhlili üçün geniş istifadə olunur.",
+        3: "TCP/IP modeli internetin əsasını təşkil edən praktik şəbəkə modelidir. OSI modeli nəzəri və yeddi təbəqədən ibarət olduğu halda, TCP/IP modeli dörd təbəqədən ibarətdir: Link, İnternet, Nəqliyyat və Tətbiq. TCP/IP real tətbiqlərdə geniş istifadə olunur və daha sadə quruluşa malikdir. OSI modeli isə şəbəkə funksiyalarını daha detallı şəkildə bölür. TCP/IP modelində təqdimat və sessiya təbəqələri ayrıca deyil, tətbiq təbəqəsinə birləşdirilib. OSI modeli protokolların inkişafı və şəbəkə dizaynı üçün nəzərdə tutulduğu halda, TCP/IP modeli protokolların real işləməsini təmin edir. TCP/IP internetdə məlumat ötürülməsini effektiv şəkildə təşkil edir, OSI modeli isə daha çox tədris və analiz məqsədləri üçün uyğundur.",
+        4: "Şəbəkə protokolları cihazlar arasında məlumat ötürülməsini və əlaqənin idarə olunmasını təmin edən qaydalar toplusudur. Bu protokollar şəbəkənin müxtəlif təbəqələrində işləyir və funksional uyğunluğu təmin edir. Əsas protokollara TCP, UDP, IP, HTTP, FTP, SMTP və DNS daxildir. TCP etibarlı və ardıcıl məlumat ötürülməsini təmin edir, UDP isə daha sürətli, lakin etibarsız ötürmə həyata keçirir. IP protokolu ünvanlaşdırma və marşrutlaşdırmanı yerinə yetirir. HTTP və FTP məlumatların veb və fayl ötürülməsi üçün istifadə olunur. SMTP və POP3 elektron poçt xidmətləri üçün işləyir. DNS isə domen adlarını IP ünvanlara çevirir. Şəbəkə protokolları sistemin sabit, təhlükəsiz və effektiv işləməsi üçün vacibdir və onların düzgün seçimi ümumi performansa birbaşa təsir göstərir.",
+        5: "IP ünvanlaşdırma şəbəkədə cihazların tanınması üçün istifadə olunan sistemdir. Hər cihaz unikal IP ünvanı ilə təyin olunur. IPv4 və IPv6 formatları mövcuddur. Subnetting böyük şəbəkəni daha kiçik alt şəbəkələrə ayırmaq üçün istifadə olunur və idarəetməni asanlaşdırır, həmçinin ünvan israfının qarşısını alır. Subnetting təhlükəsizlik və performans üstünlükləri yaradır. DHCP dinamik IP ünvanı təyin edir, subnet maskası isə şəbəkə və host hissəsini ayırır. Doğru ünvanlaşdırma və subnetting şəbəkənin stabil və effektiv işləməsi üçün vacibdir.",
+        6: "IPv4 və IPv6 internet protokolları cihazların şəbəkədə ünvanlaşdırılması üçün istifadə olunur. IPv4 32 bitlik ünvan sistemidir və təxminən 4.3 milyard unikal ünvan təqdim edir. Ünvanlar nöqtələrlə ayrılmış dörd ədəd şəklində yazılır. IPv6 isə 128 bitlik ünvan sistemidir və praktiki olaraq limitsiz ünvan sahəsi yaradır. Ünvanlar səkkiz blokdan ibarət onaltılıq formada göstərilir. IPv6 daha təhlükəsizdir və avtomatik konfiqurasiya, daxili şifrələmə kimi üstünlüklərə malikdir. IPv4 ünvan çatışmazlığı səbəbindən NAT texnologiyasına ehtiyac duyur, IPv6 isə bu problemi aradan qaldırır. IoT və 5G kimi yeni texnologiyalar IPv6-nın geniş ünvan sahəsinə görə ona əsaslanır. Hər iki protokol şəbəkə əlaqəsinin qurulmasında mühüm rol oynasa da, IPv6 gələcək internet infrastrukturu üçün əsas model sayılır.",
+        7: "NAT (Network Address Translation) daxili şəbəkədəki cihazların IP ünvanlarını xarici şəbəkəyə uyğun şəkildə dəyişdirən texnologiyadır. Bu üsul bir neçə cihazın eyni ictimai IP ünvanı paylaşaraq internetə çıxmasını təmin edir. NAT router üzərində işləyir və paketlərin mənbə və təyinat ünvanlarını dəyişdirərək ötürür. Bu, həm ünvan çatışmazlığını aradan qaldırır, həm də təhlükəsizliyi artırır. NAT üç əsas növdə tətbiq olunur: Static NAT, Dynamic NAT və PAT (Port Address Translation). Static NAT sabit uyğunluq yaradır, Dynamic NAT ünvanları avtomatik təyin edir, PAT isə bir IP ünvanı bir neçə cihaz üçün fərqli portlarla paylaşmağa imkan verir. NAT şəbəkə dizaynında geniş istifadə olunur və IPv4 ünvanlarının məhdudluğu səbəbindən xüsusi əhəmiyyət daşıyır. IPv6 ilə böyük ünvan sahəsi olduğundan NAT-a ehtiyac azalır.",
+        8:"VLAN (Virtual Local Area Network) fiziki şəbəkəni loji bölmələrə ayırmaq üçün istifadə olunan texnologiyadır. VLAN cihazların fiziki yerləşməsindən asılı olmayaraq eyni loji şəbəkədə birləşdirilməsinə imkan verir və bu, təhlükəsizliklə yanaşı idarəetməni də asanlaşdırır. VLAN-lar switch üzərində konfiqurasiya olunur və hər port müəyyən bir VLAN-a təyin edilir. Bu sayədə trafik izolyasiya olunur və lazımsız broadcast ötürmələrinin qarşısı alınır. VLAN-lar böyük şəbəkələrdə performansı artırır və idarəetmə prosesini sadələşdirir. Hər VLAN özünə məxsus broadcast domeninə malikdir. VLAN-lar arasında əlaqə yaratmaq üçün router və ya Layer 3 switch istifadə olunur. VLAN şəbəkə dizaynında çeviklik, təhlükəsizlik və strukturlaşdırma üstünlükləri təqdim edir.",
+        9: "Switch və router hər ikisi şəbəkə avadanlığıdır, lakin funksiyaları fərqlidir. Switch lokal şəbəkədə cihazları birləşdirir və MAC ünvanlarına əsaslanaraq məlumat çərçivələrini ötürür. Router isə müxtəlif şəbəkələri birləşdirir və IP ünvanlarına əsaslanaraq paketlərin marşrutlaşdırılmasını təmin edir. Switch əsasən Layer 2-də, router isə Layer 3-də çalışır. Switch lokal trafikə cavabdehdir, router isə internetə çıxışı və şəbəkələrarası əlaqəni təmin edir. Router NAT və firewall funksiyalarını dəstəkləyə bilər, switch isə VLAN konfiqurasiyası üçün istifadə olunur. Router marşrutlaşdırma protokolları ilə işləyir, switch isə daha sadə və daha sürətli fəaliyyət göstərir. Hər iki cihaz şəbəkənin stabil, təhlükəsiz və effektiv işləməsi üçün vacibdir.",
+        10: "Routing protokolları şəbəkədə məlumat paketlərinin optimal marşrut üzrə ötürülməsini təmin edən alqoritmlərdir. Əsas routing protokollarına RIP, OSPF, EIGRP və BGP daxildir. RIP hop sayına əsaslanır və sadə olsa da, iri şəbəkələrdə səmərəsizdir. OSPF link-state yanaşması ilə işləyir və SPF alqoritmindən istifadə edərək daha sürətli və dəqiq marşrut seçimi həyata keçirir. EIGRP Cisco-ya məxsus hibrid protokoldur və həm distance-vector, həm də link-state metodlarının üstünlüklərini birləşdirir. BGP isə internetin əsas marşrutlaşdırma protokoludur və avtonom sistemlər arasında işləyir. Routing protokolları statik və dinamik olur: statik marşrutlar administrator tərəfindən təyin edilir, dinamik marşrutlar isə protokollar vasitəsilə avtomatik öyrənilir. Bu protokollar şəbəkənin performansını, sabitliyini və keçidlərin optimallaşdırılmasını təmin edir.",
+        11: "OSPF və BGP marşrutlaşdırma protokolları fərqli məqsədlər üçün istifadə olunur. OSPF daxili şəbəkələrdə tətbiq edilən link-state protokoludur və SPF alqoritmindən istifadə edərək ən optimal marşrutu müəyyənləşdirir. OSPF sahələrə bölünmə, sürətli konvergensiya və stabil daxili marşrutlaşdırma üstünlükləri təqdim edir. BGP isə path-vector yanaşması ilə işləyir və avtonom sistemlər arasında marşrut mübadiləsini həyata keçirən internetin əsas backbone protokoludur. BGP böyük və qlobal miqyaslı şəbəkələri idarə edir və ISP-lər arasında marşrut seçimini təmin edir. OSPF daha çox LAN və korporativ şəbəkələrdə istifadə olunur, BGP isə beynəlxalq və böyük provayder şəbəkələrinin əlaqələndirilməsində əsas rol oynayır. Hər iki protokol şəbəkənin sabit, təhlükəsiz və effektiv işləməsi üçün vacibdir.",
+        12: "Şəbəkə təhlükəsizliyi məlumatların qorunması və icazəsiz girişin qarşısının alınması üçün vacibdir. Əsas təhlükəsizlik tədbirlərinə firewall, antivirus, şifrləmə, VPN, NAT, güclü parollar və fiziki mühafizə daxildir. Firewall daxil olan və çıxan trafiki filtrasiya edərək təhlükəli bağlantıların qarşısını alır. Antivirus sistemləri zərərli proqramları aşkarlayıb təmizləyir. VPN şifrəli tunel yaradaraq məlumatların təhlükəsiz ötürülməsini təmin edir. NAT daxili IP ünvanlarını gizlədərək əlavə qoruma yaradır. Avadanlıqların fiziki mühafizəsi və iki faktorlu autentifikasiya icazəsiz giriş riskini azaldır. Təhlükəsizlik siyasətləri, istifadəçi maarifləndirilməsi, şəbəkə monitorinqi və log analizləri hücumların erkən aşkarlanmasına kömək edir. Bu tədbirlər birlikdə sistemin sabitliyini, etibarlılığını və ümumi təhlükəsizliyini artırır.",
+        13: "VPN (Virtual Private Network) ictimai şəbəkə üzərindən şifrəli və təhlükəsiz əlaqə yaradan texnologiyadır. VPN istifadəçilərə uzaqdan özəl şəbəkəyə qoşulmaq və məlumatları təhlükəsiz şəkildə ötürmək imkanı verir. Bu texnologiya tunelləşdirmə və şifrləmə prinsipləri ilə işləyir. Əsas VPN protokollarına PPTP, L2TP/IPsec və OpenVPN daxildir. VPN istifadəçi cihazı ilə server arasında virtual tunel yaradır və bu tuneldən keçən bütün məlumatlar şifrələnir. VPN ictimai Wi-Fi şəbəkələrində təhlükəsizliyi artırır, məlumatların üçüncü tərəflər tərəfindən izlənməsinin qarşısını alır və eyni zamanda coğrafi məhdudiyyətlərin aşılmasına imkan verir. VPN korporativ və fərdi istifadə üçün uyğundur və məlumatların məxfiliyini, bütövlüyünü və təhlükəsizliyini qoruyan şəbəkə təhlükəsizliyinin əsas komponentlərindən biridir.",
+        14: "Wireless şəbəkələr IEEE 802.11 standartları əsasında fəaliyyət göstərir. Əsas versiyalar 802.11a, 802.11b, 802.11g, 802.11n, 802.11ac və 802.11ax (Wi-Fi 6) standartlarıdır. 802.11b 2.4 GHz tezlikdə işləyir və aşağı sürət təqdim edir. 802.11a 5 GHz tezlikdə daha yüksək sürət versə də, əhatə dairəsi məhduddur. 802.11g əvvəlki iki standartın üstünlüklərini birləşdirərək daha stabil performans göstərir. 802.11n həm 2.4 GHz, həm də 5 GHz tezliklərini dəstəkləyir və MIMO texnologiyasından istifadə edir. 802.11ac geniş bant genişliyi və yüksək sürət təmin edir. Ən yeni versiya olan 802.11ax (Wi-Fi 6) daha çox cihazı dəstəkləyir, sürəti artırır və enerji səmərəliliyi təqdim edir. Bu standartlar arasındakı fərqlər əsasən tezlik diapazonu, sürət, əhatə dairəsi və cihaz dəstəyi ilə bağlıdır. Müasir şəbəkələrdə Wi-Fi 6 daha stabil və yüksək performanslı bağlantı təmin edir.",
+        15: "QoS (Quality of Service) şəbəkədə müxtəlif trafik növlərinə prioritet verərək xidmət keyfiyyətini təmin edən texnologiyadır. QoS xüsusilə multimedia və real vaxt tətbiqlərində gecikmə, jitter və paket itkisini azaltmaq üçün istifadə olunur. QoS trafik növlərini tanıyır və daha vacib trafiki üstün sıraya qoyur. Məsələn, video konfrans və VoIP trafiki adi fayl ötürülməsindən daha yüksək prioritet alır. QoS router və switch üzərində konfiqurasiya olunur və əsas metodlara trafik formalaşdırma, sıralama və bant genişliyi ayırması daxildir. Bu texnologiya şəbəkə performansını artırır və resursların effektiv bölüşdürülməsini təmin edir. QoS həm lokal şəbəkələrdə, həm də geniş sahəli şəbəkələrdə tətbiq olunur və müasir multimedia xidmətlərinin sabit işləməsi üçün vacibdir.",
+        16: "MPLS (Multiprotocol Label Switching) məlumat paketlərini yönləndirmək üçün IP ünvanlar əvəzinə etiketlərdən istifadə edən texnologiyadır. Bu yanaşma marşrutlaşdırmanı sürətləndirir və daha stabil ötürmə təmin edir. MPLS Layer 2 və Layer 3 arasında işləyir və müxtəlif protokollarla uyğunluq göstərir. Onun əsas üstünlükləri sürətli marşrutlaşdırma, yüksək sabitlik, VPN dəstəyi, trafik mühəndisliyi və gecikmənin azalmasıdır. MPLS geniş sahəli şəbəkələrdə və ISP-lərdə geniş istifadə olunur. Texnologiya QoS ilə birlikdə işləyərək trafik növlərinə prioritet verə bilir. Etiket əsaslı yönləndirmə marşrut seçimini sadələşdirir və şəbəkənin çevik idarə olunmasına imkan yaradır. MPLS həm IP, həm də ATM və Frame Relay kimi müxtəlif şəbəkə infrastrukturunda tətbiq oluna bilir.",
+        17: "Yük balanslaşdırma şəbəkədə trafik və resursların bir neçə server və ya cihaz arasında bölüşdürülməsi prosesidir. Bu texnologiya sistemin performansını artırır və nasazlığa dözümlülük təmin edir. Məqsəd serverlərə düşən yükü optimallaşdırmaq və xidmətin fasiləsizliyini qorumaqdır. Load balancer trafiki analiz edir və sorğuları ən uyğun serverə yönləndirir. Bu proses həm lokal, həm də bulud əsaslı sistemlərdə tətbiq olunur. Balanslaşdırma müxtəlif alqoritmlərlə həyata keçirilir, məsələn round-robin, least connections və IP hash. Yük balanslaşdırma həm HTTP, həm də TCP səviyyəsində tətbiq oluna bilər. Bu texnologiya veb saytların, tətbiqlərin və məlumat bazalarının sabit və sürətli işləməsi üçün vacibdir. Eyni zamanda təhlükəsizlik və performans baxımından üstünlüklər təmin edir.",
+        18: "Cloud computing (bulud hesablama) şəbəkə texnologiyaları ilə birbaşa əlaqəlidir, çünki bulud xidmətləri internet üzərindən təqdim olunur və onların işləməsi şəbəkə infrastrukturundan asılıdır. Cloud modelləri üç əsas formada mövcuddur: SaaS hazır proqram təminatı təqdim edir, PaaS tətbiq inkişaf mühiti yaradır, IaaS isə virtual server və resurslar təmin edir. Bu xidmətlər istifadəçi ilə server arasında şəbəkə vasitəsilə işləyir. Bulud texnologiyaları şəbəkənin miqyaslanmasını, təhlükəsizliyini və performansını artırır. Multi-cloud, geo-replikasiya, virtualizasiya və avtomatlaşdırma kimi yanaşmalar şəbəkə dizaynında yeni imkanlar yaradır. Cloud computing müasir şəbəkə infrastrukturunun ayrılmaz hissəsidir və olmadan genişmiqyaslı xidmətlərin qurulması mümkün deyil.",
+        19: "SDN (Software Defined Networking) şəbəkənin idarəetmə hissəsinin proqram təminatı ilə ayrıldığı müasir şəbəkə yanaşmasıdır. Ənənəvi şəbəkələrdə idarəetmə və məlumat ötürülməsi eyni cihaz üzərində həyata keçirilir. SDN-də isə idarəetmə mərkəzləşdirilmiş controller vasitəsilə idarə olunur və bu, şəbəkənin çevikliyini, miqyaslana bilməsini və avtomatlaşdırılmasını artırır. SDN şəbəkə resurslarının dinamik şəkildə proqram vasitəsilə konfiqurasiya edilməsinə imkan verir. Ənənəvi şəbəkələrdə dəyişikliklər fiziki cihazlar üzərində aparıldığı halda, SDN-də bu proses tam proqramlaşdırıla bilir. SDN trafik axınını optimallaşdırmaq, təhlükəsizlik siyasətlərini tətbiq etmək və şəbəkəni digər sistemlərlə API-lər vasitəsilə inteqrasiya etmək üçün əlverişlidir. Bu texnologiya xüsusilə bulud mühitlərində və data center şəbəkələrində geniş tətbiq edilir.",
+        20: "NFV (Network Function Virtualization) şəbəkə funksiyalarının fiziki avadanlıq əvəzinə virtual mühitdə icra olunmasını təmin edən texnologiyadır. Ənənəvi şəbəkələrdə firewall, router, load balancer kimi funksiyalar xüsusi cihazlarda işləyir. NFV isə bu funksiyaları virtual maşınlarda və ya konteynerlərdə yerləşdirərək daha çevik və iqtisadi həll yaradır. Bu yanaşma xərcləri azaldır, miqyaslanmanı asanlaşdırır və şəbəkənin idarə edilməsini sadələşdirir. NFV yeni funksiyaların sürətli şəkildə tətbiqinə imkan verir və bulud infrastrukturu ilə tam uyğun işləyir. SDN ilə birlikdə istifadə edildikdə avtomatlaşdırma və trafik optimallaşdırması daha effektiv olur. NFV ISP-lər və korporativ şəbəkələr üçün uyğundur və təhlükəsizlik, performans və sabitlik baxımından əhəmiyyətli üstünlüklər təqdim edir.",
+        21: "Şəbəkə topologiyası cihazların bir-biri ilə necə əlaqələndiyini göstərən sxematik quruluşdur. Əsas topologiya növlərinə xətt, şin, üzük, ulduz və şaxəli modellər daxildir. Xətt topologiyasında cihazlar ardıcıl şəkildə bir xətt üzrə birləşdirilir. Şin topologiyasında bütün cihazlar ortaq bir kabelə qoşulur. Üzük topologiyasında məlumat bir istiqamətdə dövr edir. Ulduz topologiyasında bütün cihazlar mərkəzi switch və ya hub-a qoşulur. Şaxəli topologiya ulduz və xətt modellərinin birləşməsidir. Fiziki topologiya cihazların faktiki yerləşməsini, məntiqi topologiya isə məlumat axınının necə hərəkət etdiyini göstərir. Topologiya seçimi şəbəkənin ölçüsünə, məqsədinə və performans tələblərinə görə müəyyən edilir. Düzgün seçilmiş topologiya sabitlik, etibarlılıq və idarəetmə rahatlığı təmin edir.",
+        22: "DNS (Domain Name System) domen adlarını IP ünvanlara çevirən sistemdir. İstifadəçilər veb saytlara adla müraciət edir, DNS isə bu domen adını uyğun IP ünvanı ilə əvəzləyərək bağlantının qurulmasını təmin edir. Bu proses sayəsində istifadəçilər mürəkkəb ədədi IP ünvanları yadda saxlamaq məcburiyyətində qalmır. DNS sorğuları əvvəlcə lokal DNS serverə göndərilir, cavab tapılmazsa, daha yüksək səviyyəli serverlərə yönləndirilir. DNS hierarxik quruluşa malikdir: kök serverlər, TLD (Top Level Domain) serverləri və sonda domenə aid authoritative serverlər. DNS əsasən UDP üzərindən 53-cü portda işləyir. Sistem internetin sabit və düzgün fəaliyyət göstərməsi üçün vacibdir. DNS həmçinin təhlükəsizlik üçün DNSSEC kimi şifrləmə texnologiyalarını dəstəkləyir və veb xidmətlərin etibarlı şəkildə əlçatan olmasını təmin edir.",
+        23: "DHCP (Dynamic Host Configuration Protocol) şəbəkədə cihazlara avtomatik şəkildə IP ünvanı və digər konfiqurasiya parametrlərini təyin edən protokoldur. DHCP server cihaz şəbəkəyə qoşulduqda ona IP ünvan, subnet maskası, gateway və DNS ünvanlarını göndərir. Proses dörd mərhələdən ibarətdir: Discover, Offer, Request və Acknowledge. DHCP statik ünvanlaşdırma ehtiyacını aradan qaldırır, idarəetməni sadələşdirir və IP ünvan israfının qarşısını alır. Protokol həm IPv4, həm də IPv6 ilə işləyir və DHCP relay vasitəsilə uzaq şəbəkələrdə də tətbiq oluna bilir. Korporativ və ev şəbəkələrində geniş istifadə edilir. DHCP-in sabit işləməsi böyük şəbəkələrin etibarlı və effektiv idarə olunması üçün vacibdir.",
+        24: "ICMP (Internet Control Message Protocol) şəbəkə diaqnostikası və nasazlıqların aşkarlanması üçün istifadə olunan idarəetmə protokoludur. ICMP IP ilə birgə işləyir və məlumat ötürmür, yalnız idarəetmə və xəbərdarlıq mesajları göndərir. Ən tanınmış ICMP alətləri ping və traceroute-dur. Ping vasitəsilə cihazın əlçatanlığı, cavab vaxtı və paket itkisi ölçülür. Traceroute isə paketlərin keçdiyi marşrutu göstərərək şəbəkə problemlərinin harada yarandığını müəyyən etməyə kömək edir. ICMP router və hostlar arasında əlaqə vəziyyəti barədə məlumat verir və həm uğurlu, həm də uğursuz ötürmələr barədə siqnallar göndərir. Təhlükəsizlik məqsədilə ICMP trafiki firewall tərəfindən məhdudlaşdırıla bilər. Bu protokol şəbəkə mühəndisləri üçün əsas diaqnostika vasitələrindən biridir.",
+        25: "Şəbəkə trafikinin analizi və monitorinqi şəbəkənin performansını ölçmək və təhlükəsizliyi təmin etmək üçün vacibdir. Əsas alətlərə Wireshark, NetFlow, SNMP, Zabbix və Nagios daxildir. Wireshark paketləri analiz edir və protokolları detallı şəkildə göstərir. NetFlow Cisco tərəfindən hazırlanmış və trafik axınlarını izləmək üçün istifadə olunur. SNMP cihazların vəziyyəti və statistik məlumatlarını toplayır. Zabbix və Nagios real vaxt monitorinq və xəbərdarlıq sistemi kimi fəaliyyət göstərir. Bu alətlər gecikmə, paket itkisi və nasazlıqları vaxtında aşkarlamağa kömək edir. Trafik analizi təhlükəsizlik və resurs planlamasında mühüm rol oynayır və müasir şəbəkələr bu alətlər olmadan sabit şəkildə idarə oluna bilməz.",
+        26: "Cyber hücumlar şəbəkə və sistemlərə qarşı yönəlmiş zərərli fəaliyyətlərdir. Əsas növlərə DDoS, phishing, malware, ransomware və man-in-the-middle hücumları daxildir. DDoS serveri həddindən artıq trafiklə yükləyərək xidmətin dayanmasına səbəb olur. Phishing istifadəçiləri saxta mesajlarla aldadaraq məlumatlarını ələ keçirir. Malware sistemə zərərli kodlar yerləşdirir, ransomware isə faylları şifrələyib pul tələb edir. Hücumların qarşısının alınması üçün firewall, antivirus, VPN və şifrləmə texnologiyaları tətbiq olunur. Güclü parollar və iki faktorlu autentifikasiya təhlükəsizliyi artırır. Sistem yeniləmələri və istifadəçi maarifləndirilməsi riskləri azaldır. Trafik monitorinqi və log analizləri hücumların erkən aşkarlanmasına kömək edir. Təhlükəsizlik siyasətləri və ehtiyat nüsxələr sistemlərin dayanıqlığını təmin edir.",
+        27: "Latency, jitter və packet loss şəbəkə performansını ölçən əsas göstəricilərdir. Latency — gecikmə — məlumatın mənbədən təyinat nöqtəsinə çatma müddətidir. Jitter — dəyişkən gecikmə — paketlərin fərqli vaxtlarda çatması deməkdir. Packet loss isə ötürülən məlumatın bir hissəsinin itməsi ilə bağlıdır. Bu göstəricilər VoIP, video konfrans və digər real vaxt tətbiqlərində kritik rol oynayır. Yüksək latency gecikməyə, jitter səs və videonun pozulmasına, packet loss isə əlaqənin kəsilməsinə səbəb ola bilər. Bu problemlər şəbəkənin yüklənməsi, avadanlıq nasazlığı və yanlış konfiqurasiya nəticəsində yaranır. QoS, trafik optimallaşdırılması və sabit bağlantı bu təsirləri azalda bilər. Bu göstəricilər mütəmadi monitorinq alətləri ilə izlənməlidir.",
+        28: "IoT — Internet of Things — cihazların internet üzərindən əlaqə qurmasını təmin edən sistemdir. IoT şəbəkələri üçün əsas tələblərə aşağı gecikmə, enerji səmərəliliyi, təhlükəsizlik, miqyaslanma və uyğunluq daxildir. Cihazlar real vaxt rejimində məlumat ötürməli və stabil cavab verməlidir. Enerji istehlakı minimum olmalıdır, çünki bir çox IoT cihazı batareya ilə işləyir. Təhlükəsizlik üçün şifrələmə, autentifikasiya və məlumat bütövlüyü vacibdir. Şəbəkə çoxlu sayda cihazı dəstəkləməli və miqyaslana bilməlidir. Protokolların uyğunluğu və standartlaşma mühüm rol oynayır. IoT şəbəkələrində MQTT, CoAP və 6LoWPAN kimi yüngül protokollar istifadə olunur. Bulud inteqrasiyası və edge computing performansı artırır. Bu tələblər olmadan IoT sistemləri sabit və effektiv işləyə bilməz.",
+        29: "5G — beşinci nəsil mobil şəbəkə texnologiyası — yüksək sürət, aşağı gecikmə və geniş cihaz dəstəyi ilə seçilir. 5G saniyədə 10 Gbps-ə qədər sürət təqdim edə bilir və gecikməni 1 ms-ə qədər azaldır. Bu xüsusiyyətlər real vaxt tətbiqləri üçün idealdır. 5G IoT və smart city kimi genişmiqyaslı sistemləri dəstəkləyir. Massiv MIMO və beamforming texnologiyaları siqnalın daha dəqiq yönləndirilməsini təmin edir. 5G həm sub-6 GHz, həm də mmWave tezliklərində işləyir və daha yüksək bant genişliyi təqdim edir. Enerji səmərəliliyi artırılıb, bağlantı isə daha sabitdir. 5G avtonom nəqliyyat, uzaq tibbi xidmət və sənaye avtomatlaşdırması kimi sahələrdə yeni imkanlar yaradır. Bu texnologiya gələcəyin rəqəmsal infrastrukturunun əsas elementidir.",
+        30: "Virtualization texnologiyası fiziki resursların virtual mühitdə bölüşdürülməsini təmin edir. Şəbəkədə bu texnologiya serverlərin, router və firewall funksiyalarının virtual maşınlar üzərində işləməsinə imkan verir. Əsas tətbiq sahələrinə data center-lər, test mühitləri, bulud xidmətləri və şəbəkə funksiyalarının avtomatlaşdırılması daxildir. Virtualization resursların səmərəli istifadəsini və xərclərin azalmasını təmin edir. VMware, KVM və Hyper-V kimi platformalar geniş istifadə olunur. Şəbəkə funksiyalarının virtual formaya keçirilməsi NFV ilə birgə tətbiq olunur və miqyaslanmanı artırır. Virtual maşınlar arasında izolyasiya təhlükəsizliyi yüksəldir. İstifadəçilər müxtəlif əməliyyat sistemlərini eyni fiziki cihazda işlədə bilir. Virtualization müasir şəbəkə dizaynının əsas komponentlərindən biridir."
+
       },
       kisa: {
-        1: "Soru 1-in QISA cavabı buraya gelecek.",
-        2: "Soru 2-in qısa cavabı buraya gelecek.",
-        // 3–30 arası şimdilik boş.
+        1: "Müasir şəbəkə arxitekturalarına Client-Server, P2P, Distributed, Cluster və Cloud modelləri daxildir. Client-Server mərkəzləşdirilmiş idarəetmə, P2P bərabər əlaqə, Distributed paylanmış resurslar, Cluster yüksək performans və sabitlik, Cloud isə internet üzərindən xidmət təqdim edir. Arxitektura seçimi sistemin məqsədindən asılıdır.",
+        2: "OSI modeli şəbəkə funksiyalarını 7 təbəqəyə ayıran standartdır: Fiziki, Data Link, Şəbəkə, Nəqliyyat, Sessiya, Təqdimat və Tətbiq. Hər təbəqə müəyyən funksiyanı yerinə yetirir və birlikdə əlaqənin sabit və düzgün qurulmasını təmin edir.",
+        3: "TCP/IP modeli 4 təbəqədən ibarətdir və real internetdə istifadə olunur. OSI isə nəzəri modeldir və 7 təbəqəyə bölünür. TCP/IP-də sessiya və təqdimat təbəqələri ayrıca deyil, tətbiq təbəqəsinə daxildir. TCP/IP praktik, OSI isə tədris və analiz üçün daha uyğundur.",
+        4: "Şəbəkə protokolları məlumat ötürülməsi və əlaqənin idarəsini təmin edən qaydalardır. Əsas protokollar: TCP (etibarlı), UDP (sürətli), IP (ünvanlaşdırma), HTTP və FTP (məlumat ötürülməsi), SMTP və POP3 (e-poçt), DNS (domen–IP çevrilməsi). Onlar şəbəkənin sabit və təhlükəsiz işləməsi üçün vacibdir.",
+        5: "IP ünvanlaşdırma cihazların tanınması üçündür. Subnetting böyük şəbəkəni kiçik alt şəbəkələrə bölür və idarəetməni asanlaşdırır. IPv4, IPv6 və subnet maskası əsas anlayışlardır.",
+        6: "IPv4 32 bitlikdir və 4.3 milyard ünvan təqdim edir, nöqtəli dörd hissədən ibarətdir. IPv6 isə 128 bitlikdir, praktiki olaraq limitsiz ünvan sahəsi yaradır və onaltılıq formada yazılır. IPv6 təhlükəsizlik, avtomatik konfiqurasiya və NAT ehtiyacını aradan qaldırması ilə fərqlənir.",
+        7: "NAT daxili şəbəkədəki cihazların IP ünvanlarını xarici şəbəkəyə uyğun şəkildə dəyişdirən texnologiyadır. Bir ictimai IP ilə bir neçə cihazın internetə çıxmasını təmin edir. Üç növü var: Static NAT, Dynamic NAT və PAT. IPv4 ünvan çatışmazlığı səbəbindən geniş istifadə olunur.",
+        8: "VLAN fiziki şəbəkəni loji alt şəbəkələrə ayıran texnologiyadır. Trafiki izolyasiya edir, təhlükəsizliyi və idarəetməni artırır. Hər VLAN öz broadcast domeninə malikdir və VLAN-lar arasında əlaqə üçün router və ya Layer 3 switch istifadə olunur.",
+        9: "Switch lokal şəbəkədə cihazları birləşdirir və MAC ünvanlarına görə məlumat ötürür. Router isə şəbəkələri birləşdirir və IP ünvanlarına əsaslanaraq marşrutlaşdırma edir. Switch Layer 2-də, router Layer 3-də işləyir. Router NAT və firewall funksiyalarını dəstəkləyə bilər, switch isə VLAN üçün istifadə olunur.",
+        10: "Əsas routing protokolları RIP, OSPF, EIGRP və BGP-dir. RIP hop sayına əsaslanır, OSPF link-state yanaşması ilə işləyir, EIGRP hibrid protokoldur, BGP isə avtonom sistemlər arasında marşrutlaşdırma edir. Routing protokolları optimal marşrut seçimini təmin edir və dinamik şəkildə marşrutları öyrənir.",
+        11: "OSPF daxili şəbəkələr üçün link-state protokoludur və SPF alqoritmi ilə sürətli konvergensiya təmin edir. BGP isə avtonom sistemlər arasında path-vector yanaşması ilə marşrutlaşdırma edən internet backbone protokoludur. OSPF LAN-larda, BGP isə ISP və qlobal şəbəkələrdə istifadə olunur.",
+        12: "Şəbəkə təhlükəsizliyi üçün firewall, antivirus, şifrləmə, VPN, NAT, güclü parollar, iki faktorlu autentifikasiya və fiziki mühafizə istifadə olunur. Monitorinq və təhlükəsizlik siyasətləri hücumların qarşısını almağa kömək edir.",
+        13: "VPN ictimai şəbəkə üzərindən şifrəli və təhlükəsiz əlaqə yaradan texnologiyadır. Tunelləşdirmə və şifrləmə ilə işləyir. PPTP, L2TP/IPsec və OpenVPN kimi protokollardan istifadə olunur. Məlumatların məxfiliyini qoruyur və uzaqdan özəl şəbəkəyə qoşulmağa imkan verir.",
+        14: "Wireless şəbəkələr 802.11a/b/g/n/ac/ax standartlarına əsaslanır. Fərqlər tezlik diapazonu, sürət, əhatə dairəsi və cihaz dəstəyinə görə dəyişir. Wi-Fi 6 (802.11ax) ən yeni standartdır və daha yüksək performans, çox cihaz dəstəyi və enerji səmərəliliyi təmin edir.",
+        15: "QoS şəbəkədə trafikə prioritet verərək gecikmə və paket itkisini azaldan texnologiyadır. VoIP və video konfrans kimi real vaxt tətbiqlərində istifadə olunur. Bant genişliyi ayırması və trafik sıralaması kimi üsullarla xidmət keyfiyyətini yüksəldir.",
+        16: "MPLS etiketlər vasitəsilə marşrutlaşdırmanı sürətləndirən texnologiyadır. Sürət, sabitlik, VPN dəstəyi və trafik mühəndisliyi kimi üstünlüklər təqdim edir. QoS ilə birgə işləyir və geniş sahəli şəbəkələrdə performansı artırır.",
+        17: "Yük balanslaşdırma trafikin bir neçə server arasında paylanması prosesidir. Performansı artırır, nasazlığa dözümlülük yaradır və round-robin, least connections kimi alqoritmlərlə həyata keçirilir.",
+        18: "Cloud computing şəbəkə texnologiyalarına əsaslanır və xidmətlər internet üzərindən təqdim olunur. SaaS, PaaS və IaaS modelləri şəbəkə vasitəsilə işləyir. Bulud sistemi miqyaslanma, təhlükəsizlik və performansı artırır.",
+        19: "SDN idarəetməni cihazlardan ayıraraq mərkəzləşdirilmiş controller vasitəsilə proqramla idarə olunan şəbəkə modelidir. Ənənəvi şəbəkədən fərqi çeviklik, avtomatlaşdırma və dinamik konfiqurasiya imkanları təqdim etməsidir.",
+        20: "NFV şəbəkə funksiyalarının fiziki cihazlar əvəzinə virtual mühitdə icra edilməsidir. Xərcləri azaldır, miqyaslanmanı asanlaşdırır, çeviklik və avtomatlaşdırma təmin edir və SDN ilə birlikdə daha effektiv işləyir.",
+        21: "Şəbəkə topologiyalarına xətt, şin, üzük, ulduz və şaxəli modellər daxildir. Fiziki topologiya cihazların yerləşməsini, məntiqi topologiya isə məlumat axınının istiqamətini göstərir.",
+        22: "DNS domen adlarını IP ünvanlara çevirən sistemdir. Sorğular hierarxik DNS serverləri vasitəsilə cavablandırılır və UDP 53 portunda işləyir. İnternetin sabitliyi üçün əsas komponentdir.",
+        23:"DHCP şəbəkədə cihazlara avtomatik IP ünvanı, subnet maskası, gateway və DNS parametrlərini təyin edən protokoldur. Discover–Offer–Request–Acknowledge mərhələləri ilə işləyir və idarəetməni sadələşdirir.",
+        24: "ICMP şəbəkə diaqnostikası üçün istifadə olunur. Ping və traceroute kimi vasitələrlə əlaqə vəziyyəti, cavab vaxtı və marşrut müəyyən edilir.",
+        25: "Şəbəkə trafik analizi üçün əsas alətlər Wireshark, NetFlow, SNMP, Zabbix və Nagios-dur. Bu alətlər şəbəkə performansını və təhlükəsizliyi real vaxtda izləməyə imkan verir.",
+        26: "Cyber hücumların əsas növləri DDoS, phishing, malware və ransomware-dir. Qarşısını almaq üçün firewall, antivirus, VPN, şifrləmə, güclü parollar və iki faktorlu autentifikasiya istifadə olunur.",
+        27: "Latency gecikmə, jitter dəyişkən gecikmə, packet loss isə paket itkisi deməkdir. Bu göstəricilər real vaxt tətbiqlərində keyfiyyətə təsir edir və yüksək olduqda gecikmə və əlaqə problemləri yaradır.",
+        28: "IoT şəbəkələri üçün əsas tələblər aşağı gecikmə, enerji səmərəliliyi, təhlükəsizlik və miqyaslanmadır. IoT cihazları az enerji istifadə etməli, təhlükəsiz olmalı və çoxlu cihazı dəstəkləyə bilməlidir.",
+        29: "5G yüksək sürət, çox aşağı gecikmə və geniş cihaz dəstəyi təqdim edən mobil şəbəkə texnologiyasıdır. Massiv MIMO, beamforming və geniş tezlik dəstəyi ilə real vaxt tətbiqləri və IoT üçün ideal platformadır.",
+        30: "Virtualization şəbəkədə server, router və firewall kimi funksiyaların virtual maşınlarda işləməsini təmin edir. Əsas tətbiq sahələri data center-lər, bulud xidmətləri və test mühitləridir. Resurs istifadəsini yaxşılaşdırır və miqyaslanmanı artırır."
+
+        
       }
     };
 
     const btnUzun = document.getElementById("btn-uzun");
     const btnKisa = document.getElementById("btn-kisa");
-    const uzunGrup = document.getElementById("uzun-grup");
-    const kisaGrup = document.getElementById("kisa-grup");
-    const soruListesiBaslik = document.getElementById("soru-listesi-baslik");
+    const soruGrup = document.getElementById("soru-grup");
 
-    const seciliSoruBaslik = document.getElementById("secili-soru-baslik");
+    const seciliModEl = document.getElementById("secili-mod");
+    const seciliSoruEl = document.getElementById("secili-soru");
     const cevapMetinEl = document.getElementById("cevap-metin");
 
-    let aktifMod = "uzun"; // "uzun" veya "kisa"
+    let aktifMod = "uzun"; // 
 
-    // 1–30 arası butonları oluştur
-    function butonlariOlustur(grupEl, tip) {
+    // 🔹 3) 
+    function butonlariOlustur() {
       for (let i = 1; i <= 30; i++) {
         const btn = document.createElement("button");
         btn.className = "soru-btn";
         btn.dataset.soru = i;
-        btn.dataset.tip = tip;
-        btn.textContent = "Soru " + i;
+        btn.textContent = SORULAR[i] || ("Sual " + i);
         btn.addEventListener("click", soruTiklandi);
-        grupEl.appendChild(btn);
+        soruGrup.appendChild(btn);
       }
     }
 
-    butonlariOlustur(uzunGrup, "uzun");
-    butonlariOlustur(kisaGrup, "kisa");
+    butonlariOlustur();
 
-    // Mod değiştirme
+    
     btnUzun.addEventListener("click", () => {
       aktifMod = "uzun";
       btnUzun.classList.add("active");
       btnKisa.classList.remove("active");
-      uzunGrup.classList.remove("hidden");
-      kisaGrup.classList.add("hidden");
-      soruListesiBaslik.textContent = "Uzun cavab sualları";
-
-      seciliSoruBaslik.textContent = "Bir soru seçin";
-      cevapMetinEl.textContent = "Bu alana cevabı yazın.";
+      seciliModEl.textContent = "Mod: Uzun cavab";
+      
+      if (seciliSoruEl.textContent === "Bir sual seçin.") {
+        cevapMetinEl.textContent = "Bu alana cavabı yazın.";
+      }
     });
 
     btnKisa.addEventListener("click", () => {
       aktifMod = "kisa";
       btnKisa.classList.add("active");
       btnUzun.classList.remove("active");
-      kisaGrup.classList.remove("hidden");
-      uzunGrup.classList.add("hidden");
-      soruListesiBaslik.textContent = "Qısa cavab sualları";
-
-      seciliSoruBaslik.textContent = "Bir soru seçin";
-      cevapMetinEl.textContent = "Bu alana cevabı yazın.";
+      seciliModEl.textContent = "Mod: Qısa cavab";
+      if (seciliSoruEl.textContent === "Bir sual seçin.") {
+        cevapMetinEl.textContent = "Bu alana cavabı yazın.";
+      }
     });
 
-    // Soruya tıklanınca ilgili cevabı göster
+    
     function soruTiklandi(e) {
       const numara = e.currentTarget.dataset.soru;
-      const tip = e.currentTarget.dataset.tip; // uzun / kisa
+      const soruMetni = SORULAR[numara] || ("Sual " + numara);
 
-      seciliSoruBaslik.textContent =
-        (tip === "uzun" ? "Uzun cavab - " : "Qısa cavab - ") +
-        "Soru " + numara;
+      seciliSoruEl.textContent = soruMetni;
 
       const metin =
-        cevaplar[tip] && cevaplar[tip][numara]
-          ? cevaplar[tip][numara]
-          : "Bu alana cevabı yazın.";
+        cevaplar[aktifMod] && cevaplar[aktifMod][numara]
+          ? cevaplar[aktifMod][numara]
+          : "Bu alana cavabı yazın.";
 
       cevapMetinEl.textContent = metin;
     }
