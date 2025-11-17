@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Soru – Cavab Sayfası</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: #f5f5f5;
+      color: #222;
+      display: flex;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    h1 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .mode-toggle {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .mode-toggle button {
+      border: none;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      background: #e4e4e7;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .mode-toggle button.active {
+      background: #2563eb;
+      color: #ffffff;
+    }
+
+    .mode-toggle button:active {
+      transform: scale(0.97);
+    }
+
+    .layout {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .soru-listesi {
+      flex: 1 1 260px;
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 12px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .soru-baslik {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .soru-grup {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .soru-btn {
+      flex: 0 0 calc(25% - 6px);
+      min-width: 80px;
+      padding: 6px 8px;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      background: #ffffff;
+      cursor: pointer;
+      font-size: 0.85rem;
+      text-align: center;
+      transition: background 0.15s, border-color 0.15s, transform 0.1s;
+    }
+
+    .soru-btn:hover {
+      background: #eff6ff;
+      border-color: #bfdbfe;
+    }
+
+    .soru-btn:active {
+      transform: scale(0.97);
+    }
+
+    .cevap-alani {
+      flex: 1 1 260px;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      padding: 12px;
+      background: #fafafa;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .cevap-baslik {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .cevap-kutu {
+      margin-top: 4px;
+      border-radius: 8px;
+      border: 1px dashed #cbd5f5;
+      background: #f9fafb;
+      padding: 10px;
+      font-size: 0.95rem;
+      color: #374151;
+      min-height: 120px;
+      line-height: 1.5;
+      white-space: pre-wrap;
+    }
+
+    .not {
+      margin-top: 6px;
+      font-size: 0.75rem;
+      color: #6b7280;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      .soru-btn {
+        flex: 0 0 calc(33.333% - 6px);
+      }
+
+      .container {
+        padding: 12px;
+      }
+
+      .soru-listesi,
+      .cevap-alani {
+        max-height: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Soru – Cavab Çalışma Sayfası</h1>
+
+    <!-- Uzun / Qısa cavab seçimi -->
+    <div class="mode-toggle">
+      <button id="btn-uzun" class="active">Uzun cavab</button>
+      <button id="btn-kisa">Qısa cavab</button>
+    </div>
+
+    <div class="layout">
+      <!-- Soru listesi -->
+      <div class="soru-listesi">
+        <div class="soru-baslik" id="soru-listesi-baslik">Uzun cavab sualları</div>
+
+        <div class="soru-grup" id="uzun-grup"></div>
+        <div class="soru-grup hidden" id="kisa-grup"></div>
+      </div>
+
+      <!-- Cevap alanı -->
+      <div class="cevap-alani">
+        <div class="cevap-baslik" id="secili-soru-baslik">Bir soru seçin</div>
+        <div class="cevap-kutu" id="cevap-metin">
+Bu alana cevabı yazın.
+        </div>
+        <div class="not">
+          Not: Aşağıdaki "cevaplar" nesnesindeki metinleri değiştirerek
+          her sorunun cevabını ayrı ayrı yazabilirsən.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Buraya kendi cevaplarını yazacağın yer:
+    // ÖRNEK:
+    // uzun -> Soru 1, 2...
+    // kisa -> Soru 1, 2...
+    const cevaplar = {
+      uzun: {
+        1: "Soru 1-in UZUN cavabı buraya gelecek.\n\nBu metni dilediğin gibi dəyiş.",
+        2: "Soru 2-in uzun cavabı buraya gelecek.",
+        // 3–30 arası şimdilik boş, sen doldurursun:
+        // 3: "Soru 3 uzun cavab...",
+      },
+      kisa: {
+        1: "Soru 1-in QISA cavabı buraya gelecek.",
+        2: "Soru 2-in qısa cavabı buraya gelecek.",
+        // 3–30 arası şimdilik boş.
+      }
+    };
+
+    const btnUzun = document.getElementById("btn-uzun");
+    const btnKisa = document.getElementById("btn-kisa");
+    const uzunGrup = document.getElementById("uzun-grup");
+    const kisaGrup = document.getElementById("kisa-grup");
+    const soruListesiBaslik = document.getElementById("soru-listesi-baslik");
+
+    const seciliSoruBaslik = document.getElementById("secili-soru-baslik");
+    const cevapMetinEl = document.getElementById("cevap-metin");
+
+    let aktifMod = "uzun"; // "uzun" veya "kisa"
+
+    // 1–30 arası butonları oluştur
+    function butonlariOlustur(grupEl, tip) {
+      for (let i = 1; i <= 30; i++) {
+        const btn = document.createElement("button");
+        btn.className = "soru-btn";
+        btn.dataset.soru = i;
+        btn.dataset.tip = tip;
+        btn.textContent = "Soru " + i;
+        btn.addEventListener("click", soruTiklandi);
+        grupEl.appendChild(btn);
+      }
+    }
+
+    butonlariOlustur(uzunGrup, "uzun");
+    butonlariOlustur(kisaGrup, "kisa");
+
+    // Mod değiştirme
+    btnUzun.addEventListener("click", () => {
+      aktifMod = "uzun";
+      btnUzun.classList.add("active");
+      btnKisa.classList.remove("active");
+      uzunGrup.classList.remove("hidden");
+      kisaGrup.classList.add("hidden");
+      soruListesiBaslik.textContent = "Uzun cavab sualları";
+
+      seciliSoruBaslik.textContent = "Bir soru seçin";
+      cevapMetinEl.textContent = "Bu alana cevabı yazın.";
+    });
+
+    btnKisa.addEventListener("click", () => {
+      aktifMod = "kisa";
+      btnKisa.classList.add("active");
+      btnUzun.classList.remove("active");
+      kisaGrup.classList.remove("hidden");
+      uzunGrup.classList.add("hidden");
+      soruListesiBaslik.textContent = "Qısa cavab sualları";
+
+      seciliSoruBaslik.textContent = "Bir soru seçin";
+      cevapMetinEl.textContent = "Bu alana cevabı yazın.";
+    });
+
+    // Soruya tıklanınca ilgili cevabı göster
+    function soruTiklandi(e) {
+      const numara = e.currentTarget.dataset.soru;
+      const tip = e.currentTarget.dataset.tip; // uzun / kisa
+
+      seciliSoruBaslik.textContent =
+        (tip === "uzun" ? "Uzun cavab - " : "Qısa cavab - ") +
+        "Soru " + numara;
+
+      const metin =
+        cevaplar[tip] && cevaplar[tip][numara]
+          ? cevaplar[tip][numara]
+          : "Bu alana cevabı yazın.";
+
+      cevapMetinEl.textContent = metin;
+    }
+  </script>
+</body>
+</html>
